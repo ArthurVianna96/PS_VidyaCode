@@ -9,11 +9,13 @@ services:
       - ./server:/app/server
     depends_on:
       - mysql
+    links:
+      - mysql
   mysql: 
     image: mysql:8.0.21
     container_name: db
     ports:
-      - 3307:3306
+      - 3306:3306
     environment:
       - MYSQL_DATABASE=PS_VidyaCode
       - MYSQL_ROOT_PASSWORD=password
