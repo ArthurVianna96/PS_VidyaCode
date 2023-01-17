@@ -4,13 +4,12 @@
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
   $dotenv->safeLoad();
   
-  require 'Model/ClientModel.php';
+  require 'Controllers/ClientController.php';
 
   Flight::route('/', function(){
-    $clientsModel = new ClientModel();
-    $query = 'SELECT * FROM client';
-    $fields = [];
-    $clientsModel->fetch($query, $fields);
+    $clientController = new ClientController();
+    $clients = $clientController->listClients();
+    Flight::json($clients, 200);
   });
 
   Flight::start();
