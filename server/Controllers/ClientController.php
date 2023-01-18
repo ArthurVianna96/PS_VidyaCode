@@ -45,8 +45,20 @@
         'email' => $request->email,
         'phone' => $request->phone
       ];
-      $result = $this->clientService->insert($input);
-      return $result;
+      try {
+        $result = $this->clientService->insert($input);
+        return [
+          'status' => 201,
+          'data' => $input
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
     }
   }
 ?>

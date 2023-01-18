@@ -21,7 +21,7 @@
   Flight::route('POST /client', function() {
     $clientController = new ClientController();
     $response = $clientController->insert(Flight::request()->data);
-    echo $response;
+    Flight::json($response['data'], $response['status']);
   });
 
   Flight::start();
