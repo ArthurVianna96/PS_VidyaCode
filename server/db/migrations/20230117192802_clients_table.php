@@ -7,19 +7,19 @@ final class ClientsTable extends AbstractMigration
 {
     public function change(): void
     {
-        $table = $this->table('client');
+        $table = $this->table('clients');
         $table
-            ->addColumn('company', 'string')
-            ->addColumn('fictional_name', 'string')
-            ->addColumn('register_number', 'string')
-            ->addColumn('zip_code', 'string')
-            ->addColumn('address', 'string')
-            ->addColumn('number', 'string')
-            ->addColumn('district', 'string')
-            ->addColumn('city', 'string')
-            ->addColumn('state', 'string')
-            ->addColumn('email', 'string')
-            ->addColumn('phone', 'string')
+            ->addColumn('company', 'string', ['null' => false])
+            ->addColumn('fictional_name', 'string', ['null' => false])
+            ->addColumn('register_number', 'string', ['null' => false])
+            ->addColumn('zip_code', 'string', ['null' => false])
+            ->addColumn('address', 'string', ['null' => false])
+            ->addColumn('number', 'string', ['null' => false])
+            ->addColumn('district', 'string', ['null' => false])
+            ->addColumn('city', 'string', ['null' => false])
+            ->addColumn('state', 'string', ['null' => false])
+            ->addColumn('email', 'string', ['null' => false])
+            ->addColumn('phone', 'string', ['null' => false])
             ->create();
     }
 }
