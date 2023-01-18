@@ -21,5 +21,10 @@
       return $result;
     }
 
+    public function insert($input) {
+      $result = $this->clientModel->insert('client', $input);
+      return $result;
+    }
+
   }    
 ?>

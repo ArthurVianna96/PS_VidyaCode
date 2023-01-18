@@ -6,16 +6,22 @@
   
   require 'Controllers/ClientController.php';
 
-  Flight::route('/client', function(){
+  Flight::route('GET /client', function(){
     $clientController = new ClientController();
     $clients = $clientController->find();
     Flight::json($clients, 200);
   });
 
-  Flight::route('/client/@id', function($id){
+  Flight::route('GET /client/@id', function($id){
     $clientController = new ClientController();
     $response = $clientController->findById($id);
     Flight::json($response['data'], $response['status']); 
+  });
+
+  Flight::route('POST /client', function() {
+    $clientController = new ClientController();
+    $response = $clientController->insert();
+    echo $response;
   });
 
   Flight::start();

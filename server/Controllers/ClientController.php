@@ -30,5 +30,23 @@
         'data' => $result[0],
       ];
     }
+
+    public function insert() {
+      $input = [
+        'company' => 'Tecna Construtora',
+        'fictionalName' => 'Teste',
+        'registerNumber' => '12345678',
+        'zipCode' => '70355010',
+        'address' => 'Rua felicidade',
+        'number' => '12',
+        'district' => 'asa sul',
+        'city' => 'Brasília',
+        'state' => 'DF',
+        'email' => 'teste@email.com',
+        'phone' => '61996268850'
+      ];
+      $result = $this->clientService->insert($input);
+      return $result;
+    }
   }
 ?>
