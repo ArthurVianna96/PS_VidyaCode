@@ -10,7 +10,7 @@
 
     public function find() {
       $query = '
-        SELECT PC.product_client_id AS id, C.company AS client, P.name AS product FROM product_client AS PC
+        SELECT PC.product_client_id AS id, C.company AS client, P.name AS product, PC.expiration_date AS expirationDate FROM product_client AS PC
         JOIN products AS P
           ON PC.product_id = P.id
         JOIN clients AS C
@@ -21,7 +21,7 @@
 
     public function findById($id) {
       $query = '
-        SELECT PC.product_client_id AS id, C.company AS client, P.name AS product FROM product_client AS PC
+        SELECT PC.product_client_id AS id, C.company AS client, P.name AS product, PC.expiration_date AS expirationDate FROM product_client AS PC
         JOIN products AS P
           ON PC.product_id = P.id
         JOIN clients AS C

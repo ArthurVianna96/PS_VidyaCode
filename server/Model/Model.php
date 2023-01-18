@@ -12,7 +12,7 @@
       $stmt = $this->conn->prepare($query);
       $stmt->execute($fields);
 
-      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       if (count($result)) {
         return $result;
