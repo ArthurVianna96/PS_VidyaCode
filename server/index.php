@@ -62,6 +62,11 @@
     Flight::json($response['data'], $response['status']);
   });
 
+  Flight::route('POST /expiration', function() {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->updateExpirationDates(Flight::request()->data);
+    Flight::json($response['data'], $response['status']);
+  });
 
   Flight::start();
 ?>

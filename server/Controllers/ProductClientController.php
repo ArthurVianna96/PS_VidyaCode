@@ -51,5 +51,33 @@
         ];
       }
     }
+
+    public function updateExpirationDates($request) {
+      $clientId = $request->clientId;
+      $daysToAdd = $request->daysToAdd;
+      try {
+        $doesHaveProducts = $this->productClientService->findByClientId($clientId);
+        if(!$doesHaveProducts) {
+          return [
+            'status' => $this->errorMap['NOT_FOUND'],
+            'data' => [
+              'message' => 'Client does not have any products registered',
+            ]
+          ];
+        }
+        $result = $this->productClientService->updateExpirationDates($clientId, $daysToAdd);
+        return [
+          'status' => 200,
+          'data' => $result
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
   }
 ?>

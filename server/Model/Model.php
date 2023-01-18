@@ -21,6 +21,10 @@
       }
     }
 
+    public function execute($query) {
+      $stmt = $this->conn->exec($query);
+    }
+
     public function insert($tableName, $input) {
       $keys = [];
       $values = [];
