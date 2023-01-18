@@ -37,5 +37,11 @@
     Flight::json($response['data'], $response['status']);
   });
 
+  Flight::route('POST /product', function() {
+    $productController = new ProductController();
+    $response = $productController->insert(Flight::request()->data);
+    Flight::json($response['data'], $response['status']);
+  });
+
   Flight::start();
 ?>
