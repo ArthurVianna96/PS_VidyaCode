@@ -3,7 +3,7 @@
   require_once '/app/server/Interfaces/AbstractModel.php';
   require_once '/app/server/Utils/stringConvertion.php';
 
-  class ProductModel extends Connection implements AbstractModel {
+  class Model extends Connection implements AbstractModel {
     public function __construct() {
       parent::__construct();
     }

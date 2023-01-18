@@ -1,11 +1,11 @@
 <?php
-  require_once '/app/server/Model/ProductModel.php';
+  require_once '/app/server/Model/Model.php';
 
   class ProductService {
     private $productModel;
 
     public function __construct() {
-      $this->productModel = new ProductModel();
+      $this->productModel = new Model();
     }
 
     public function find() {

@@ -1,11 +1,11 @@
 <?php
-  require_once '/app/server/Model/ClientModel.php';
+  require_once '/app/server/Model/Model.php';
 
   class ClientService {
     private $clientModel;
 
     public function __construct() {
-      $this->clientModel = new ClientModel();
+      $this->clientModel = new Model();
     }
 
     public function find() {
