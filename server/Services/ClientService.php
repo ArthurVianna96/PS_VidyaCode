@@ -9,20 +9,20 @@
     }
 
     public function find() {
-      $query = 'SELECT * FROM client';
+      $query = 'SELECT * FROM clients';
       $result = $this->clientModel->fetch($query);
       return $result;
     }
 
     public function findById($id) {
-      $query = 'SELECT * FROM client WHERE id = :id';
+      $query = 'SELECT * FROM clients WHERE id = :id';
       $fields = ['id' => $id];
       $result = $this->clientModel->fetch($query, $fields);
       return $result;
     }
 
     public function insert($input) {
-      $result = $this->clientModel->insert('client', $input);
+      $result = $this->clientModel->insert('clients', $input);
       return $result;
     }
 

@@ -20,7 +20,7 @@
 
   Flight::route('POST /client', function() {
     $clientController = new ClientController();
-    $response = $clientController->insert();
+    $response = $clientController->insert(Flight::request()->data);
     echo $response;
   });
 

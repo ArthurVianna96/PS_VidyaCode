@@ -31,19 +31,19 @@
       ];
     }
 
-    public function insert() {
+    public function insert($request) {
       $input = [
-        'company' => 'Tecna Construtora',
-        'fictionalName' => 'Teste',
-        'registerNumber' => '12345678',
-        'zipCode' => '70355010',
-        'address' => 'Rua felicidade',
-        'number' => '12',
-        'district' => 'asa sul',
-        'city' => 'Brasília',
-        'state' => 'DF',
-        'email' => 'teste@email.com',
-        'phone' => '61996268850'
+        'company' => $request->company,
+        'fictionalName' => $request->fictionalName,
+        'registerNumber' => $request->registerNumber,
+        'zipCode' => $request->zipCode,
+        'address' => $request->address,
+        'number' => $request->number,
+        'district' => $request->district,
+        'city' => $request->city,
+        'state' => $request->state,
+        'email' => $request->email,
+        'phone' => $request->phone
       ];
       $result = $this->clientService->insert($input);
       return $result;
