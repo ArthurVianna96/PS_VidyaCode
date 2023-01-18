@@ -6,6 +6,7 @@
   
   require 'Controllers/ClientController.php';
   require 'Controllers/ProductController.php';
+  require 'Controllers/ProductClientController.php';
 
   Flight::route('GET /client', function(){
     $clientController = new ClientController();
@@ -42,6 +43,25 @@
     $response = $productController->insert(Flight::request()->data);
     Flight::json($response['data'], $response['status']);
   });
+
+  Flight::route('GET /purchase', function() {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->find();
+    Flight::json($response, 200);
+  });
+
+  Flight::route('GET /purchase/@id', function($id) {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->findById($id);
+    Flight::json($response['data'], $response['status']);
+  });
+
+  Flight::route('POST /purchase', function() {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->insert(Flight::request()->data);
+    Flight::json($response['data'], $response['status']);
+  });
+
 
   Flight::start();
 ?>
