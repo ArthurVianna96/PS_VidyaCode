@@ -8,6 +8,10 @@
   require 'Controllers/ProductController.php';
   require 'Controllers/ProductClientController.php';
 
+  header("Access-Control-Allow-Origin: *");
+  header('Access-Control-Allow-Methods: GET, POST');
+  header("Access-Control-Allow-Headers: X-Requested-With");
+
   Flight::route('GET /client', function(){
     $clientController = new ClientController();
     $response = $clientController->find();

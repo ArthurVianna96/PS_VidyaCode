@@ -1,5 +1,13 @@
 <script setup>
+  import { onMounted } from 'vue';
+
   import HeaderVue from '../components/HeaderVue.vue';
+  import { fetchClients } from '../services/api';
+
+  onMounted(async () => {
+    const clients = await fetchClients();
+    console.log(clients);
+  })
 </script>
 
 <template>
