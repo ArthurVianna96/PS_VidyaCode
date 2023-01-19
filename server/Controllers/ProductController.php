@@ -52,5 +52,22 @@
         ];
       }
     }
+
+    public function delete($id) {
+      try {
+        $result = $this->productService->delete($id);
+        return [
+          'status' => 200,
+          'data' => 'product deleted'
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
   }
 ?>

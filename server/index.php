@@ -44,6 +44,12 @@
     Flight::json($response['data'], $response['status']);
   });
 
+  Flight::route('DELETE /product/@id', function($id) {
+    $productController = new ProductController();
+    $response = $productController->delete($id);
+    Flight::json($response['data'], $response['status']);
+  });
+
   Flight::route('GET /purchase', function() {
     $productClientController = new ProductClientController();
     $response = $productClientController->find();

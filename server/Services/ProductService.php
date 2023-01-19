@@ -26,5 +26,10 @@
       return $result;
     }
 
+    public function delete($id) {
+      $fields = ['id' => $id];
+      $this->productModel->delete('products', $fields);
+    }
+
   }    
 ?>

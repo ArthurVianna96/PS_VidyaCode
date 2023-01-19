@@ -1,9 +1,8 @@
 <?php 
   require_once 'Connection.php';
-  require_once '/app/server/Interfaces/AbstractModel.php';
   require_once '/app/server/Utils/stringConvertion.php';
 
-  class Model extends Connection implements AbstractModel {
+  class Model extends Connection {
     public function __construct() {
       parent::__construct();
     }
@@ -37,6 +36,13 @@
       $query = "INSERT INTO " . $tableName . " (" . implode(', ', $keys) . ") VALUES (" . implode(', ', $placeholders) . ");";
       $stmt = $this->conn->prepare($query);
       $stmt->execute($values);
+      return $query;
+    }
+
+    public function delete($tableName, $field) {
+      $query = "DELETE FROM " . $tableName . " WHERE id = :id";
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute($field);
       return $query;
     }
   }
