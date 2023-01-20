@@ -6,3 +6,14 @@ export const fetchClients = async () => {
   const data = await response.json();
   return data;
 }
+
+export const registerClient = async (client) => {
+  const url = `${BASE_URL}/client`;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(client)
+  }
+  const response = await fetch(url, options);
+  const data = await response.json();
+  return data;
+}

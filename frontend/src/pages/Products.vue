@@ -1,9 +1,9 @@
 <script setup>
-  import HeaderVue from '../components/HeaderVue.vue';
+  import HeaderComponent from '../components/HeaderComponent.vue';
 </script>
 
 <template>
-  <HeaderVue />
+  <HeaderComponent />
   <div class="container">
     
   </div>

@@ -1,10 +1,10 @@
 <script setup>
-  import HeaderVue from '../components/HeaderVue.vue';
+  import HeaderComponent from '../components/HeaderComponent.vue';
   import HelloWorld from '../components/HelloWorld.vue';
 </script>
 
 <template>
-  <HeaderVue />
+  <HeaderComponent />
   <div class="container">
     <HelloWorld />
     <p>Teste</p>
