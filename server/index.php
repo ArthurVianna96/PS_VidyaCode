@@ -66,13 +66,13 @@
     Flight::json($response['data'], $response['status']);
   });
 
-  Flight::route('POST /purchase', function() {
+  Flight::route('POST|OPTIONS /purchase', function() {
     $productClientController = new ProductClientController();
     $response = $productClientController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
   });
 
-  Flight::route('POST /expiration', function() {
+  Flight::route('POST|OPTIONS /expiration', function() {
     $productClientController = new ProductClientController();
     $response = $productClientController->updateExpirationDates(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);

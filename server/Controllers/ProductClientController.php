@@ -35,6 +35,7 @@
       $input = [
         'productId' => $request->productId,
         'clientId' => $request->clientId,
+        'expirationDate' => $request->expirationDate,
       ];
       try {
         $result = $this->productClientService->insert($input);
