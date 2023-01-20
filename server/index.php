@@ -9,7 +9,7 @@
   require 'Controllers/ProductClientController.php';
 
   header("Access-Control-Allow-Origin: *");
-  header('Access-Control-Allow-Methods: GET, POST');
+  header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
   header("Access-Control-Allow-Headers: X-Requested-With");
 
   Flight::route('GET /client', function(){
@@ -24,9 +24,9 @@
     Flight::json($response['data'], $response['status']); 
   });
 
-  Flight::route('POST /client', function() {
+  Flight::route('POST | OPTIONS /client', function() {
     $clientController = new ClientController();
-    $response = $clientController->insert(Flight::request()->data);
+    $response = $clientController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
   });
 
@@ -44,7 +44,7 @@
 
   Flight::route('POST /product', function() {
     $productController = new ProductController();
-    $response = $productController->insert(Flight::request()->data);
+    $response = $productController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
   });
 
@@ -68,13 +68,13 @@
 
   Flight::route('POST /purchase', function() {
     $productClientController = new ProductClientController();
-    $response = $productClientController->insert(Flight::request()->data);
+    $response = $productClientController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
   });
 
   Flight::route('POST /expiration', function() {
     $productClientController = new ProductClientController();
-    $response = $productClientController->updateExpirationDates(Flight::request()->data);
+    $response = $productClientController->updateExpirationDates(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
   });
 
