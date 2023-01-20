@@ -33,3 +33,30 @@ export const registerClient = async (client) => {
     }
   }
 }
+
+export const registerProduct = async (product) => {
+  const url = `${BASE_URL}/product`;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(product)
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 201) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 201,
+      message: 'Produto registrado com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}

@@ -24,7 +24,7 @@
     Flight::json($response['data'], $response['status']); 
   });
 
-  Flight::route('POST | OPTIONS /client', function() {
+  Flight::route('POST|OPTIONS /client', function() {
     $clientController = new ClientController();
     $response = $clientController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);
@@ -42,7 +42,7 @@
     Flight::json($response['data'], $response['status']);
   });
 
-  Flight::route('POST /product', function() {
+  Flight::route('POST|OPTIONS /product', function() {
     $productController = new ProductController();
     $response = $productController->insert(json_decode(Flight::request()->getBody()));
     Flight::json($response['data'], $response['status']);

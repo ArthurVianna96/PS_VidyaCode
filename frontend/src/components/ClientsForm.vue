@@ -6,7 +6,7 @@
   import { registerClient } from '../services/api';
   // import getRegisterNumberInfo from '../services/cnpjApi';
 
-  const company = ref('tecna');
+  const company = ref('');
   const fictionalName = ref('');
   const registerNumber = ref('');
   const zipCode = ref('');
