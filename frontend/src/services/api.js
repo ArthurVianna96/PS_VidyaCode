@@ -13,7 +13,23 @@ export const registerClient = async (client) => {
     method: 'POST',
     body: JSON.stringify(client)
   }
-  const response = await fetch(url, options);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 201) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 201,
+      message: 'Cliente registrado com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
 }

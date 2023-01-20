@@ -57,8 +57,8 @@
       email: email.value,
       phone: phone.value,
     }
-    const data = await registerClient(input);
-    console.log(data);
+    const { status, message } = await registerClient(input);
+    alert(`status: ${status}\n ${message}`);
   }
 
   // watchEffect(async () => {
