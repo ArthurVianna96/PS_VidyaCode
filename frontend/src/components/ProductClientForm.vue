@@ -1,5 +1,7 @@
 <script setup>
-  import { ref, watchEffect } from 'vue';
+  import { ref, reactive, computed, watchEffect } from 'vue';
+  import { useVuelidate } from '@vuelidate/core';
+  import { required, helpers } from '@vuelidate/validators';
 
   import InputComponent from './InputComponent.vue';
   import SelectComponent from './SelectComponent.vue';
@@ -11,6 +13,23 @@
   const productId = ref('');
   const expirationDate = ref('');
 
+  const state = reactive({
+    clientId,
+    productId,
+    expirationDate,
+  });
+
+  const REQUIRED_FIELD_MSG='Campo Obrigatório';
+
+  const rules = computed(() => ({
+    clientId: { required: helpers.withMessage(REQUIRED_FIELD_MSG, required) },
+    productId: { required: helpers.withMessage(REQUIRED_FIELD_MSG, required) },
+    expirationDate: { required: helpers.withMessage(REQUIRED_FIELD_MSG, required) }
+  }));
+
+  const v$ = useVuelidate(rules, state);
+
+
   watchEffect(async () => {
     const clientsArray = await fetchClients();
     clientsArray.forEach((client) => clients.value.push({ name: client.fictional_name, id: client.id }));
@@ -18,6 +37,11 @@
   });
   
   const onSubmit = async () => {
+    v$.value.$validate();
+    if(v$.value.$error) {
+      return;
+    }
+
     const input = {
       clientId: clientId.value,
       productId: productId.value,
@@ -31,24 +55,39 @@
 
 <template>
   <div class="form-container">
-    <SelectComponent 
-      name="Cliente"
-      placeholder="Selecione um cliente"
-      v-model:value="clientId"
-      :options="clients"
-    />
-    <SelectComponent 
-      name="Produto"
-      placeholder="Selecione um produto"
-      v-model:value="productId"
-      :options="products"
-    />
-    <InputComponent
-      name="expiration-date"
-      placeholder="Data de validade do produto"
-      type="date"
-      v-model:value="expirationDate"
-    />
+    <div class="input-group">
+      <SelectComponent 
+        name="Cliente"
+        placeholder="Selecione um cliente"
+        v-model:value="clientId"
+        :options="clients"
+      />
+      <div class="error" v-if="v$.clientId.$invalid && v$.clientId.$dirty">
+        {{ v$.clientId.$errors[0].$message }}
+      </div>
+    </div>
+    <div class="input-group">
+      <SelectComponent 
+        name="Produto"
+        placeholder="Selecione um produto"
+        v-model:value="productId"
+        :options="products"
+      />
+      <div class="error" v-if="v$.productId.$invalid && v$.productId.$dirty">
+        {{ v$.productId.$errors[0].$message }}
+      </div>
+    </div>
+    <div class="input-group">
+      <InputComponent
+        name="expiration-date"
+        placeholder="Data de validade do produto"
+        type="date"
+        v-model:value="expirationDate"
+      />
+      <div class="error" v-if="v$.expirationDate.$invalid && v$.expirationDate.$dirty">
+        {{ v$.expirationDate.$errors[0].$message }}
+      </div>
+    </div>
   </div>
   <div class="form-actions">
     <button @click.prevent="onSubmit">Salvar</button>

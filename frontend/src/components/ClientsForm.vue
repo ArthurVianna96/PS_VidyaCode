@@ -1,5 +1,7 @@
 <script setup>
-  import { ref, watchEffect } from 'vue';
+  import { ref, reactive, computed, watchEffect } from 'vue';
+  import { useVuelidate } from '@vuelidate/core';
+  import * as validators from '@vuelidate/validators';
 
   import InputComponent from './InputComponent.vue';
   import getZipCodeInfo from '../services/viaCEPApi';
@@ -17,6 +19,47 @@
   const state = ref('');
   const email = ref('');
   const phone = ref('');
+
+  const formFields = reactive({
+    company,
+    fictionalName,
+    registerNumber,
+    zipCode,
+    address,
+    number,
+    district,
+    city,
+    state,
+    email,
+    phone,
+  });
+
+  const REQUIRED_FIELD_MSG='Campo Obrigatório';
+
+  const rules = computed(() => ({
+    company: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    fictionalName: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    registerNumber: { 
+      required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required), 
+      format: validators.helpers.withMessage('O campo deve ser composto de 14 digitos', validators.helpers.regex(/^\d{14}$/))
+    },
+    zipCode: { 
+      required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required), 
+      format: validators.helpers.withMessage('O campo deve ser composto de 8 digitos', validators.helpers.regex(/^\d{5}-\d{3}$/)),
+    },
+    address: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    number: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    district: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    city: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    state: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+    email: { 
+      required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required), 
+      email: validators.helpers.withMessage('O campo deve ser um email válido', validators.email),
+    },
+    phone: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
+  }))
+
+  const v$ = useVuelidate(rules, formFields);
 
   const fields = [
     { name: 'company', placeholder: 'Razão Social', type: 'text', model: company },
@@ -44,6 +87,10 @@
   });
 
   const onSubmit = async () => {
+    v$.value.$validate();
+    if (v$.value.$error) {
+      return;
+    }
     const input = {
       company: company.value,
       fictionalName: fictionalName.value,
@@ -78,6 +125,11 @@
         :placeholder="field.placeholder"
         v-model:value="field.model.value"
       />
+      <div class="error" v-if="v$[field.name]?.$invalid && v$[field.name].$dirty">
+        <p v-for="error in v$[field.name].$errors">
+            {{ error.$message }}
+        </p>
+      </div>
     </div>
   </div>
   <div class="form-actions">
