@@ -14,6 +14,13 @@ export const fetchProducts = async () => {
   return data;
 }
 
+export const fetchPurchases = async () => {
+  const url = `${BASE_URL}/purchase`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
 export const registerClient = async (client) => {
   const url = `${BASE_URL}/client`;
   const options = {
