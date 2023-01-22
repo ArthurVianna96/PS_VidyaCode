@@ -7,7 +7,7 @@
 
 <template>
   <form>
-    <h1>Cadastro de {{ title }}</h1>
+    <h1>{{ title }}</h1>
     <hr />
     <slot></slot>
   </form>

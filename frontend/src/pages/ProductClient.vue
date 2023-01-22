@@ -8,7 +8,7 @@
   <HeaderComponent />
   <div class="container">
     <div class="form">
-      <FormLayout title="Compra de Produtos">
+      <FormLayout title="Cadastro de Compra de Produtos">
         <ProductClientForm :edit-data="null"/>
       </FormLayout>
     </div>

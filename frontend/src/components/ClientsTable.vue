@@ -1,11 +1,18 @@
 <script setup>
-  import { Pencil, TrashCan } from 'mdue';
+  import { Pencil, TrashCan, Update } from 'mdue';
+
+  import { updateClientsPurchase } from '../services/api';
 
   defineProps({
     data: Array,
   });
 
-  defineEmits(['showModal']);
+  defineEmits(['showModal', 'updateExpirationDates']);
+
+/*   const updateExpirationDates = async () => {
+    const { status, message } = await updateClientsPurchase();
+    alert(`status: ${status}\n ${message}`);
+  } */
 </script>
 
 <template>
@@ -40,6 +47,7 @@
       <td>{{ client.phone }}</td>
       <td class="actions">
         <button @click="$emit('showModal', client)"><Pencil /></button>
+        <button @click="$emit('updateExpirationDates', client.id)"><Update /></button>
         <button><TrashCan /></button>
       </td>
     </tr>
@@ -74,13 +82,15 @@
   .actions button {
     font-size: 20px;
     background-color: rgba(128, 128, 128, 0.178);
-    border: 1px solid rgb(224, 59, 59);
+    border: 1px solid rgb(20, 131, 10);
     border-radius: 3px;
     padding: 0.3rem;
   }
   .actions button:first-of-type {
     border: 1px solid rgb(233, 171, 78);
   }
+  .actions button:last-of-type {
+    border: 1px solid rgb(224, 59, 59);  }
   .actions button:hover {
     cursor: pointer;
     opacity: 0.8;

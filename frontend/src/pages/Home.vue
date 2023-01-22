@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, watchEffect } from 'vue';
+  import { ref, watchEffect, watch } from 'vue';
   import { AccountSearch } from 'mdue';
 
   import HeaderComponent from '../components/HeaderComponent.vue';
@@ -8,11 +8,12 @@
   import ClientsTable from '../components/ClientsTable.vue';
   import SelectComponent from '../components/SelectComponent.vue';
   import { fetchClients, fetchProducts, fetchPurchases } from '../services/api';
-  import EditModal from '../components/EditModal.vue';
+  import Modal from '../components/Modal.vue';
   import FormLayout from '../layouts/FormLayout.vue';
   import ProductClientForm from '../components/ProductClientForm.vue';
   import ProductsForm from '../components/ProductsForm.vue';
   import ClientsForm from '../components/ClientsForm.vue';
+  import ExpirationDateForm from '../components/ExpirationDateForm.vue';
 
   const options = [
     { name: 'Cliente', id: 'client' },
@@ -22,11 +23,12 @@
 
   const data = ref([]);
   const typeOfFetch = ref('');
-  const showModal = ref(false);
+  const showEditModal = ref(false);
+  const showExpirationDateModel = ref(false);
+  const expirationDateUpdateClient = ref('');
   const editData = ref({});
 
-  watchEffect(async () => {
-    if (!typeOfFetch.value) return;
+  const fetchData = async () => {
     switch(typeOfFetch.value) {
       case 'client':
         data.value = await fetchClients();
@@ -40,14 +42,30 @@
       default:
         break;
     }
+  }
+
+  watchEffect(async () => {
+    if (!typeOfFetch.value) return;
+    await fetchData();
   });
 
-  const showEditModal = (payload) => {
-    showModal.value = true;
+  const openEditModal = (payload) => {
+    showEditModal.value = true;
     editData.value = payload;
   }
 
-  const closeEditModal = () => showModal.value = false;
+  const openExpirationDateModal = (payload) => {
+    showExpirationDateModel.value = true;
+    expirationDateUpdateClient.value = payload;
+  }
+
+  const closeEditModal = async () => {
+    showEditModal.value = false;
+    await fetchData();
+  }
+  const closeExpirationDateModal = () => {
+    showExpirationDateModel.value = false;
+  }
 
 </script>
 
@@ -62,9 +80,9 @@
         :options="options"
         class="select"
       />
-      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data" @showModal="showEditModal" />
-      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" @showModal="showEditModal" />
-      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" @showModal="showEditModal" />
+      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data" @showModal="openEditModal" />
+      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" @showModal="openEditModal" />
+      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" @showModal="openEditModal" @updateExpirationDates="openExpirationDateModal" />
       <table v-else>
         <tr>
           <th>.</th>
@@ -80,17 +98,22 @@
       </table>
     </section>
   </div>
-  <EditModal v-if="showModal" @closeModal="closeEditModal">
-    <FormLayout v-if="typeOfFetch === 'purchase'" title="Compra">
+  <Modal v-if="showEditModal" @closeModal="closeEditModal">
+    <FormLayout v-if="typeOfFetch === 'purchase'" title="Edição de Compra">
       <ProductClientForm :edit-data="editData" />
     </FormLayout>
-    <FormLayout title="Produto" v-if="typeOfFetch === 'product'">
+    <FormLayout title="Edição de Produto" v-if="typeOfFetch === 'product'">
       <ProductsForm :edit-data="editData" />
     </FormLayout>
-    <FormLayout title="Cliente" v-if="typeOfFetch === 'client'">
+    <FormLayout title="Edição de Cliente" v-if="typeOfFetch === 'client'">
       <ClientsForm :edit-data="editData" />
     </FormLayout>
-  </EditModal>
+  </Modal>
+  <Modal v-if="showExpirationDateModel" @close-modal="closeExpirationDateModal">
+    <FormLayout title="Atualização de validade">
+      <ExpirationDateForm :client-id="expirationDateUpdateClient"/>
+    </FormLayout>
+  </Modal>
 </template>
 
 <style scoped>

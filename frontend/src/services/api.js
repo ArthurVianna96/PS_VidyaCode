@@ -182,3 +182,30 @@ export const editClient = async (client, id) => {
     }
   }
 }
+
+export const updateClientsPurchase = async (expirationInfo) => {
+  const url = `${BASE_URL}/expiration`;
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(expirationInfo)
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 201,
+      message: 'Validades do cliente atualizadas com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}

@@ -32,7 +32,7 @@
     flex-direction: column;
     gap: 0.3rem;
   }
-  input[type='text'], input[type='email'], input[type='date'] {
+  input[type='text'], input[type='email'], input[type='date'], input[type='number'] {
     padding: 0.6rem 0.4rem; 
     border-radius: 3px;
     border: 1px solid #ffffff;
@@ -44,10 +44,7 @@
     cursor: not-allowed;
     opacity: 0.8;
   }
-  input[type='text']::placeholder, input[type='email']::placeholder {
+  input[type='text']::placeholder, input[type='email']::placeholder, input[type='number']::placeholder {
     color: #acaaaa;
   }
-  /* label {
-    display: none;
-  } */
 </style>
