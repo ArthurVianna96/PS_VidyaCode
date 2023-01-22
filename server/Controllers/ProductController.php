@@ -83,6 +83,14 @@
           'data' => 'product deleted'
         ];
       } catch (PDOException $e) {
+        if (str_contains($e->getMessage(), 'SQLSTATE[45000]')) {
+          return [
+            'status' => $this->errorMap['CONFLICT'],
+            'data' => [
+              'message' => 'O produto está vinculado a uma compra e por isso não pode ser excluído',
+            ]
+          ];
+        }
         return [
           'status' => 500,
           'data' => [

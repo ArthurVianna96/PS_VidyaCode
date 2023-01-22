@@ -53,8 +53,8 @@
       return $query;
     }
 
-    public function delete($tableName, $field) {
-      $query = "DELETE FROM " . $tableName . " WHERE id = :id";
+    public function delete($tableName, $field, $idField = 'id') {
+      $query = "DELETE FROM " . $tableName . " WHERE " . $idField . " = :id";
       $stmt = $this->conn->prepare($query);
       $stmt->execute($field);
       return $query;

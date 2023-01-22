@@ -209,3 +209,81 @@ export const updateClientsPurchase = async (expirationInfo) => {
     }
   }
 }
+
+export const deleteProduct = async (productId) => {
+  const url = `${BASE_URL}/product/${productId}`;
+  const options = {
+    method: 'DELETE',
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Produto excluido com sucesso',
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}
+
+export const deletePurchase = async (purchaseId) => {
+  const url = `${BASE_URL}/purchase/${purchaseId}`;
+  const options = {
+    method: 'DELETE',
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Compra excluida com sucesso',
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}
+
+export const deleteClient = async (clientId) => {
+  const url = `${BASE_URL}/client/${clientId}`;
+  const options = {
+    method: 'DELETE',
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Cliente excluído com sucesso',
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}

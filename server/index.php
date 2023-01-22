@@ -9,7 +9,7 @@
   require 'Controllers/ProductClientController.php';
 
   header("Access-Control-Allow-Origin: *");
-  header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
+  header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
   header("Access-Control-Allow-Headers: X-Requested-With");
   
   Flight::route('OPTIONS /*/@id', function($id) {
@@ -37,6 +37,12 @@
   Flight::route('PUT /client/@id', function($id) {
     $clientController = new ClientController();
     $response = $clientController->update(json_decode(Flight::request()->getBody()), $id);
+    Flight::json($response['data'], $response['status']);
+  });
+
+  Flight::route('DELETE /client/@id', function($id) {
+    $clientController = new ClientController();
+    $response = $clientController->delete($id);
     Flight::json($response['data'], $response['status']);
   });
 
@@ -86,6 +92,12 @@
   Flight::route('PUT /purchase/@id', function($id) {
     $productClientController = new ProductClientController();
     $response = $productClientController->update(json_decode(Flight::request()->getBody()), $id);
+    Flight::json($response['data'], $response['status']);
+  });
+
+  Flight::route('DELETE /purchase/@id', function($id) {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->delete($id);
     Flight::json($response['data'], $response['status']);
   });
 

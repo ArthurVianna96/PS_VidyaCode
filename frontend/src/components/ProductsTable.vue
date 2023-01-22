@@ -1,11 +1,20 @@
 <script setup>
   import { Pencil, TrashCan } from 'mdue';
 
+  import { deleteProduct } from '../services/api';
+
   defineProps({
     data: Array,
   });
 
-  defineEmits(['showModal']);
+  const emits = defineEmits(['showModal', 'onDelete']);
+
+  const remove = async (id) => {
+    const { status, message } = await deleteProduct(id);
+    alert(`status: ${status}\n ${message}`);
+    if (status !== 200) return;
+    emits('onDelete');
+  }
 </script>
 
 <template>
@@ -24,7 +33,7 @@
       <td>{{ product.version }}</td>
       <td class="actions">
         <button @click="$emit('showModal', product)"><Pencil /></button>
-        <button><TrashCan /></button>
+        <button @click="remove(product.id)"><TrashCan /></button>
       </td>
     </tr>
   </table>

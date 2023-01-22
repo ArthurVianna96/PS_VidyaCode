@@ -55,6 +55,12 @@
       return $result;
     }
 
+    public function delete($id) {
+      $field = ['id' => $id];
+      $result = $this->model->delete('product_client', $field, 'product_client_id');
+      return $result;
+    }
+
     public function updateExpirationDates($clientId, $daysToAdd) {
       $this->model->execute("CALL STP_ATUALIZAVALIDADE_CLIENTE(" . $clientId . ", " . $daysToAdd . ");");
       $result = $this->findByClientId($clientId);

@@ -75,6 +75,23 @@
       }
     }
 
+    public function delete($id) {
+      try {
+        $result = $this->productClientService->delete($id);
+        return [
+          'status' => 200,
+          'data' => $result
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
+
     public function updateExpirationDates($request) {
       $clientId = $request->clientId;
       $daysToAdd = $request->daysToAdd;

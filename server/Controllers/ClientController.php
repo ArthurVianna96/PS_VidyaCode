@@ -90,5 +90,30 @@
         ];
       }
     }
+
+    public function delete($id) {
+      try {
+        $result = $this->clientService->delete($id);
+        return [
+          'status' => 200,
+          'data' => $result
+        ];
+      } catch (PDOException $e) {
+        if (str_contains($e->getMessage(), 'SQLSTATE[23000]')) {
+          return [
+            'status' => $this->errorMap['CONFLICT'],
+            'data' => [
+              'message' => 'O cliente está vinculado a uma compra e por isso não pode ser excluído',
+            ]
+          ];
+        }
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
   }
 ?>

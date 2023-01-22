@@ -1,11 +1,21 @@
 <script setup>
   import { Pencil, TrashCan } from 'mdue';
 
+  import { deletePurchase } from '../services/api';
+
   defineProps({
     data: Array,
   });
 
-  defineEmits(['showModal']);
+
+  const emits = defineEmits(['showModal', 'onDelete']);
+
+  const remove = async (id) => {
+    const { status, message } = await deletePurchase(id);
+    alert(`status: ${status}\n ${message}`);
+    if (status !== 200) return;
+    emits('onDelete');
+  }
 </script>
 
 <template>
@@ -24,7 +34,7 @@
       <td>{{ new Date(purchase.expirationDate).toLocaleDateString() }}</td>
       <td class="actions">
         <button @click="$emit('showModal', purchase)"><Pencil /></button>
-        <button><TrashCan /></button>
+        <button @click="remove(purchase.id)"><TrashCan /></button>
       </td>
     </tr>
   </table>

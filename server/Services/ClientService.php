@@ -30,5 +30,11 @@
       $result = $this->clientModel->update('clients', $input, $id, 'id');
       return $result;
     }
+
+    public function delete($id) {
+      $field = ['id' => $id];
+      $result = $this->clientModel->delete('clients', $field);
+      return $result;
+    }
   }    
 ?>

@@ -1,18 +1,20 @@
 <script setup>
   import { Pencil, TrashCan, Update } from 'mdue';
 
-  import { updateClientsPurchase } from '../services/api';
+  import { deleteClient } from '../services/api';
 
   defineProps({
     data: Array,
   });
 
-  defineEmits(['showModal', 'updateExpirationDates']);
+  const emits = defineEmits(['showModal', 'onDelete', 'updateExpirationDates']);
 
-/*   const updateExpirationDates = async () => {
-    const { status, message } = await updateClientsPurchase();
+  const remove = async (id) => {
+    const { status, message } = await deleteClient(id);
     alert(`status: ${status}\n ${message}`);
-  } */
+    if (status !== 200) return;
+    emits('onDelete');
+  }
 </script>
 
 <template>
@@ -48,7 +50,7 @@
       <td class="actions">
         <button @click="$emit('showModal', client)"><Pencil /></button>
         <button @click="$emit('updateExpirationDates', client.id)"><Update /></button>
-        <button><TrashCan /></button>
+        <button @click="remove(client.id)"><TrashCan /></button>
       </td>
     </tr>
   </table>

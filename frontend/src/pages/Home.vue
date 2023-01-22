@@ -80,9 +80,9 @@
         :options="options"
         class="select"
       />
-      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data" @showModal="openEditModal" />
-      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" @showModal="openEditModal" />
-      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" @showModal="openEditModal" @updateExpirationDates="openExpirationDateModal" />
+      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data" @showModal="openEditModal" @onDelete="fetchData" />
+      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" @showModal="openEditModal" @onDelete="fetchData" />
+      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" @showModal="openEditModal" @updateExpirationDates="openExpirationDateModal" @onDelete="fetchData"/>
       <table v-else>
         <tr>
           <th>.</th>
