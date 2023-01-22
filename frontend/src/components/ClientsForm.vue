@@ -6,7 +6,7 @@
   import InputComponent from './InputComponent.vue';
   import getZipCodeInfo from '../services/viaCEPApi';
   import { registerClient } from '../services/api';
-  // import getRegisterNumberInfo from '../services/cnpjApi';
+  import getRegisterNumberInfo from '../services/cnpjApi';
 
   const company = ref('');
   const fictionalName = ref('');
@@ -41,7 +41,7 @@
     fictionalName: { required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required) },
     registerNumber: { 
       required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required), 
-      format: validators.helpers.withMessage('O campo deve ser composto de 14 digitos', validators.helpers.regex(/^\d{14}$/))
+      format: validators.helpers.withMessage('O campo deve ser composto de 14 digitos', validators.helpers.regex(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/)),
     },
     zipCode: { 
       required: validators.helpers.withMessage(REQUIRED_FIELD_MSG, validators.required), 
@@ -62,9 +62,9 @@
   const v$ = useVuelidate(rules, formFields);
 
   const fields = [
+    { name: 'registerNumber', placeholder: 'CNPJ', type: 'text', model: registerNumber },
     { name: 'company', placeholder: 'Razão Social', type: 'text', model: company },
     { name: 'fictionalName', placeholder: 'Nome Fantasia', type: 'text', model: fictionalName },
-    { name: 'registerNumber', placeholder: 'CNPJ', type: 'text', model: registerNumber },
     { name: 'zipCode', placeholder: 'CEP', type: 'text', model: zipCode },
     { name: 'address', placeholder: 'Endereço', type: 'text', model: address },
     { name: 'district', placeholder: 'Bairro', type: 'text', model: district },
@@ -108,11 +108,18 @@
     alert(`status: ${status}\n ${message}`);
   }
 
-  // watchEffect(async () => {
-  //   if (!registerNumber.value || registerNumber.value.length !== 14) return;
-  //   const data = await getRegisterNumberInfo(registerNumber.value);
-  //   console.log(data);
-  // })
+  const registerNumberMask = (value) => {
+    return `${value.slice(0,2)}.${value.slice(2,5)}.${value.slice(5,8)}/${value.slice(8,12)}-${value.slice(-2)}`;
+  }
+
+  watchEffect(async () => {
+    if (!registerNumber.value || registerNumber.value.length !== 14) return;
+    const { estabelecimento, razao_social } = await getRegisterNumberInfo(registerNumber.value);
+    registerNumber.value = registerNumberMask(registerNumber.value);
+    zipCode.value = estabelecimento.cep;
+    fictionalName.value = estabelecimento.nome_fantasia;
+    company.value = razao_social;
+  })
 
 </script>
 

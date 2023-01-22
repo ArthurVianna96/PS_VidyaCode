@@ -1,5 +1,6 @@
 <script setup>
   import { ref, watchEffect } from 'vue';
+  import { AccountSearch } from 'mdue';
 
   import HeaderComponent from '../components/HeaderComponent.vue';
   import ProductsTable from '../components/ProductsTable.vue';
@@ -48,8 +49,21 @@
         class="select"
       />
       <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data"/>
-      <ProductsTable v-if="typeOfFetch === 'product'" :data="data" />
-      <ClientsTable v-if="typeOfFetch === 'client'" :data="data" />
+      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" />
+      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" />
+      <table v-else>
+        <tr>
+          <th>.</th>
+        </tr>
+        <tr>
+          <td>
+            <div class="no-data">
+              <AccountSearch />
+              <p>Selecione um tipo de consulta</p>
+            </div>
+          </td>
+        </tr>
+      </table>
     </section>
   </div>
 </template>
@@ -66,9 +80,58 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 1rem;
-    width: 80%;
+    min-width: 80%;
   }
   .select {
     width: fit-content;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: #25263141 5px 0px 20px 1px;
+  }
+  th, td {
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+  th {
+    padding: 1.5rem;
+    color: transparent;
+  }
+  tr:nth-child(odd) {
+    background-color: #e7e7e7;
+  }
+  tr:first-of-type {
+    background-color: #252631;
+    color: #ffffff;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .actions button {
+    font-size: 20px;
+    background-color: rgba(128, 128, 128, 0.178);
+    border: 1px solid rgb(224, 59, 59);
+    border-radius: 3px;
+    padding: 0.3rem;
+  }
+  .actions button:first-of-type {
+    border: 1px solid rgb(233, 171, 78);
+  }
+  .actions button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .no-data {
+    font-size: 6rem;
+    color: #838282;
+  }
+  .no-data > p {
+    font-size: 24px;
   }
 </style>
