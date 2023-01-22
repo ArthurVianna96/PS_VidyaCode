@@ -101,3 +101,84 @@ export const registerPurchase = async (purchase) => {
     }
   }
 }
+
+export const editPurchase = async (purchase, id) => {
+  const url = `${BASE_URL}/purchase/${id}`;
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(purchase)
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Compra editada com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}
+
+export const editProduct = async (product, id) => {
+  const url = `${BASE_URL}/product/${id}`;
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(product)
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Produto editado com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}
+
+export const editClient = async (client, id) => {
+  const url = `${BASE_URL}/client/${id}`;
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify(client)
+  }
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (response.status !== 200) {
+      return {
+        status: response.status,
+        message: data.message
+      }
+    }
+    return {
+      status: 200,
+      message: 'Cliente editado com sucesso'
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: 'Algo deu errado'
+    }
+  }
+}

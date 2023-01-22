@@ -26,6 +26,11 @@
       return $result;
     }
 
+    public function update($input, $id) {
+      $result = $this->productModel->update('products', $input, $id, 'id');
+      return $result;
+    }
+
     public function delete($id) {
       $fields = ['id' => $id];
       $this->productModel->delete('products', $fields);

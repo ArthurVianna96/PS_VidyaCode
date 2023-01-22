@@ -60,5 +60,35 @@
         ];
       }
     }
+
+    public function update($request, $id) {
+      $input = [
+        'company' => $request->company,
+        'fictionalName' => $request->fictionalName,
+        'registerNumber' => $request->registerNumber,
+        'zipCode' => $request->zipCode,
+        'address' => $request->address,
+        'number' => $request->number,
+        'district' => $request->district,
+        'city' => $request->city,
+        'state' => $request->state,
+        'email' => $request->email,
+        'phone' => $request->phone
+      ];
+      try {
+        $result = $this->clientService->update($input, $id);
+        return [
+          'status' => 200,
+          'data' => $input
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
   }
 ?>

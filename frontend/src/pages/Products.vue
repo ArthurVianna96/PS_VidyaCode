@@ -9,7 +9,7 @@
   <div class="container">
     <div class="form">
       <FormLayout title="Produtos">
-        <ProductsForm />
+        <ProductsForm :edit-data="null"/>
       </FormLayout>
     </div>
   </div>

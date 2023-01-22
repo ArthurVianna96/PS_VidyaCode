@@ -4,6 +4,8 @@
   defineProps({
     data: Array,
   });
+
+  defineEmits(['showModal']);
 </script>
 
 <template>
@@ -21,7 +23,7 @@
       <td>{{ purchase.product }}</td>
       <td>{{ new Date(purchase.expirationDate).toLocaleDateString() }}</td>
       <td class="actions">
-        <button><Pencil /></button>
+        <button @click="$emit('showModal', purchase)"><Pencil /></button>
         <button><TrashCan /></button>
       </td>
     </tr>

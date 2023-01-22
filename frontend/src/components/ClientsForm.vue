@@ -5,20 +5,23 @@
 
   import InputComponent from './InputComponent.vue';
   import getZipCodeInfo from '../services/viaCEPApi';
-  import { registerClient } from '../services/api';
+  import { registerClient, editClient } from '../services/api';
   import getRegisterNumberInfo from '../services/cnpjApi';
 
-  const company = ref('');
-  const fictionalName = ref('');
-  const registerNumber = ref('');
-  const zipCode = ref('');
-  const address = ref('');
-  const number = ref('');
-  const district = ref('');
-  const city = ref('');
-  const state = ref('');
-  const email = ref('');
-  const phone = ref('');
+  const props = defineProps(['editData']);
+
+  const id = ref(props.editData ? props.editData.id : '');
+  const company = ref(props.editData ? props.editData.company : '');
+  const fictionalName = ref(props.editData ? props.editData.fictional_name : '');
+  const registerNumber = ref(props.editData ? props.editData.register_number : '');
+  const zipCode = ref(props.editData ? props.editData.zip_code : '');
+  const address = ref(props.editData ? props.editData.address : '');
+  const number = ref(props.editData ? props.editData.number : '');
+  const district = ref(props.editData ? props.editData.district : '');
+  const city = ref(props.editData ? props.editData.city : '');
+  const state = ref(props.editData ? props.editData.state : '');
+  const email = ref(props.editData ? props.editData.email : '');
+  const phone = ref(props.editData ? props.editData.phone : '');
 
   const formFields = reactive({
     company,
@@ -86,6 +89,16 @@
     state.value = data.uf;
   });
 
+  const registerSubmit = async (input) => {
+    const { status, message } = await registerClient(input);
+    alert(`status: ${status}\n ${message}`);
+  }
+
+  const editSubmit = async (input) => {
+    const { status, message } = await editClient(input, id.value);
+    alert(`status: ${status}\n ${message}`);
+  }
+
   const onSubmit = async () => {
     v$.value.$validate();
     if (v$.value.$error) {
@@ -104,8 +117,12 @@
       email: email.value,
       phone: phone.value,
     }
-    const { status, message } = await registerClient(input);
-    alert(`status: ${status}\n ${message}`);
+    if (!props.editData) {
+      await registerSubmit(input);
+    } else {
+      await editSubmit(input);
+    }
+    v$.value.$validate();
   }
 
   const registerNumberMask = (value) => {

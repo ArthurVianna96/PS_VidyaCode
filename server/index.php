@@ -9,8 +9,12 @@
   require 'Controllers/ProductClientController.php';
 
   header("Access-Control-Allow-Origin: *");
-  header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+  header('Access-Control-Allow-Methods: GET, POST, PUT, OPTIONS');
   header("Access-Control-Allow-Headers: X-Requested-With");
+  
+  Flight::route('OPTIONS /*/@id', function($id) {
+    Flight::json(json_encode(['status' => 'ok']), 200);
+  });
 
   Flight::route('GET /client', function(){
     $clientController = new ClientController();
@@ -30,6 +34,12 @@
     Flight::json($response['data'], $response['status']);
   });
 
+  Flight::route('PUT /client/@id', function($id) {
+    $clientController = new ClientController();
+    $response = $clientController->update(json_decode(Flight::request()->getBody()), $id);
+    Flight::json($response['data'], $response['status']);
+  });
+
   Flight::route('GET /product', function() {
     $productController = new ProductController();
     $response = $productController->find();
@@ -39,6 +49,13 @@
   Flight::route('GET /product/@id', function($id) {
     $productController = new ProductController();
     $response = $productController->findById($id);
+    Flight::json($response['data'], $response['status']);
+  });
+
+
+  Flight::route('PUT /product/@id', function($id) {
+    $productController = new ProductController();
+    $response = $productController->update(json_decode(Flight::request()->getBody()), $id);
     Flight::json($response['data'], $response['status']);
   });
 
@@ -63,6 +80,12 @@
   Flight::route('GET /purchase/@id', function($id) {
     $productClientController = new ProductClientController();
     $response = $productClientController->findById($id);
+    Flight::json($response['data'], $response['status']);
+  });
+
+  Flight::route('PUT /purchase/@id', function($id) {
+    $productClientController = new ProductClientController();
+    $response = $productClientController->update(json_decode(Flight::request()->getBody()), $id);
     Flight::json($response['data'], $response['status']);
   });
 

@@ -8,6 +8,11 @@
   import ClientsTable from '../components/ClientsTable.vue';
   import SelectComponent from '../components/SelectComponent.vue';
   import { fetchClients, fetchProducts, fetchPurchases } from '../services/api';
+  import EditModal from '../components/EditModal.vue';
+  import FormLayout from '../layouts/FormLayout.vue';
+  import ProductClientForm from '../components/ProductClientForm.vue';
+  import ProductsForm from '../components/ProductsForm.vue';
+  import ClientsForm from '../components/ClientsForm.vue';
 
   const options = [
     { name: 'Cliente', id: 'client' },
@@ -17,6 +22,8 @@
 
   const data = ref([]);
   const typeOfFetch = ref('');
+  const showModal = ref(false);
+  const editData = ref({});
 
   watchEffect(async () => {
     if (!typeOfFetch.value) return;
@@ -35,6 +42,13 @@
     }
   });
 
+  const showEditModal = (payload) => {
+    showModal.value = true;
+    editData.value = payload;
+  }
+
+  const closeEditModal = () => showModal.value = false;
+
 </script>
 
 <template>
@@ -48,9 +62,9 @@
         :options="options"
         class="select"
       />
-      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data"/>
-      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" />
-      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" />
+      <PurchasesTable v-if="typeOfFetch === 'purchase'" :data="data" @showModal="showEditModal" />
+      <ProductsTable v-else-if="typeOfFetch === 'product'" :data="data" @showModal="showEditModal" />
+      <ClientsTable v-else-if="typeOfFetch === 'client'" :data="data" @showModal="showEditModal" />
       <table v-else>
         <tr>
           <th>.</th>
@@ -66,6 +80,17 @@
       </table>
     </section>
   </div>
+  <EditModal v-if="showModal" @closeModal="closeEditModal">
+    <FormLayout v-if="typeOfFetch === 'purchase'" title="Compra">
+      <ProductClientForm :edit-data="editData" />
+    </FormLayout>
+    <FormLayout title="Produto" v-if="typeOfFetch === 'product'">
+      <ProductsForm :edit-data="editData" />
+    </FormLayout>
+    <FormLayout title="Cliente" v-if="typeOfFetch === 'client'">
+      <ClientsForm :edit-data="editData" />
+    </FormLayout>
+  </EditModal>
 </template>
 
 <style scoped>

@@ -2,7 +2,6 @@
   import HeaderComponent from '../components/HeaderComponent.vue';
   import ProductClientForm from '../components/ProductClientForm.vue';
   import FormLayout from '../layouts/FormLayout.vue';
-
 </script>
 
 <template>
@@ -10,7 +9,7 @@
   <div class="container">
     <div class="form">
       <FormLayout title="Compra de Produtos">
-        <ProductClientForm />
+        <ProductClientForm :edit-data="null"/>
       </FormLayout>
     </div>
   </div>

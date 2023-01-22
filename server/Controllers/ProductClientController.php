@@ -53,6 +53,28 @@
       }
     }
 
+    public function update($request, $id) {
+      $input = [
+        'productId' => $request->productId,
+        'clientId' => $request->clientId,
+        'expirationDate' => $request->expirationDate,
+      ];
+      try {
+        $result = $this->productClientService->update($input, $id);
+        return [
+          'status' => 200,
+          'data' => $result
+        ];
+      } catch (PDOException $e) {
+        return [
+          'status' => 500,
+          'data' => [
+            'message' => $e->getMessage(),
+          ]
+        ];
+      }
+    }
+
     public function updateExpirationDates($request) {
       $clientId = $request->clientId;
       $daysToAdd = $request->daysToAdd;

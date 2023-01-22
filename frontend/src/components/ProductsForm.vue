@@ -4,11 +4,14 @@
   import { helpers, minLength, required } from '@vuelidate/validators';
 
   import InputComponent from './InputComponent.vue';
-  import { registerProduct } from '../services/api';
+  import { registerProduct, editProduct } from '../services/api';
 
-  const name = ref('');
-  const description = ref('');
-  const version = ref('');
+  const props = defineProps(['editData']);
+
+  const id = ref(props.editData ? props.editData.id : null);
+  const name = ref(props.editData ? props.editData.name : '');
+  const description = ref(props.editData ? props.editData.description : '');
+  const version = ref(props.editData ? props.editData.version : '');
 
   const state = reactive({
     name,
@@ -41,23 +44,38 @@
     { name: 'version', placeholder: 'Versão', type: 'text', model: version },
   ];
 
+  const registerSubmit = async (input) => {
+    const { status, message } = await registerProduct(input);
+    alert(`status: ${status}\n ${message}`);
+    name.value='';
+    description.value='';
+    version.value='';
+  }
+
+  const editSubmit = async (input) => {
+    const { status, message } = await editProduct(input, id.value);
+    alert(`status: ${status}\n ${message}`);
+  }
+
   const onSubmit = async () => {
     v$.value.$validate();
     if(v$.value.$error) {
       return;
     }
+
     const input = {
       name: name.value,
       description: description.value,
       version: version.value,
     }
-    const { status, message } = await registerProduct(input);
-    alert(`status: ${status}\n ${message}`);
+    if (!props.editData) {
+      await registerSubmit(input);
+    } else {
+      await editSubmit(input);
+    }
     v$.value.$reset();
-    name.value='';
-    description.value='';
-    version.value='';
   }
+
   
 </script>
 

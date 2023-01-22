@@ -4,6 +4,8 @@
   defineProps({
     data: Array,
   });
+
+  defineEmits(['showModal']);
 </script>
 
 <template>
@@ -21,7 +23,7 @@
       <td>{{ product.description }}</td>
       <td>{{ product.version }}</td>
       <td class="actions">
-        <button><Pencil /></button>
+        <button @click="$emit('showModal', product)"><Pencil /></button>
         <button><TrashCan /></button>
       </td>
     </tr>

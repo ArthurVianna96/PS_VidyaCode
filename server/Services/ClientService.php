@@ -26,5 +26,9 @@
       return $result;
     }
 
+    public function update($input, $id) {
+      $result = $this->clientModel->update('clients', $input, $id, 'id');
+      return $result;
+    }
   }    
 ?>

@@ -5,13 +5,16 @@
 
   import InputComponent from './InputComponent.vue';
   import SelectComponent from './SelectComponent.vue';
-  import { fetchClients, fetchProducts, registerPurchase } from '../services/api';
+  import { fetchClients, fetchProducts, registerPurchase, editPurchase } from '../services/api';
+
+  const props = defineProps(['editData']);
 
   const clients = ref([]);
   const products = ref([]);
-  const clientId = ref('');
-  const productId = ref('');
-  const expirationDate = ref('');
+  const id = ref(props.editData ? props.editData.id  : '');
+  const clientId = ref(props.editData ? props.editData.client_id  : '');
+  const productId = ref(props.editData ? props.editData.product_id : '');
+  const expirationDate = ref(props.editData ? props.editData.expirationDate.split(' ')[0] : '');
 
   const state = reactive({
     clientId,
@@ -35,6 +38,16 @@
     clientsArray.forEach((client) => clients.value.push({ name: client.fictional_name, id: client.id }));
     products.value = await fetchProducts();
   });
+
+  const registerSubmit = async (input) => {
+    const { status, message } = await registerPurchase(input);
+    alert(`status: ${status}\n ${message}`);
+  }
+
+  const editSubmit = async (input) => {
+    const { status, message } = await editPurchase(input, id.value);
+    alert(`status: ${status}\n ${message}`);
+  }
   
   const onSubmit = async () => {
     v$.value.$validate();
@@ -47,8 +60,12 @@
       productId: productId.value,
       expirationDate: expirationDate.value,
     }
-    const { status, message } = await registerPurchase(input);
-    alert(`status: ${status}\n ${message}`);
+    if (!props.editData) {
+      await registerSubmit(input);
+    } else {
+      await editSubmit(input);
+    }
+    v$.value.$reset();
   }
 
 </script>
