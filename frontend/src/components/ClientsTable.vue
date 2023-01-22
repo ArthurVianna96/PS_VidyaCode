@@ -26,12 +26,8 @@
       <th>CNPJ</th>
       <th>CEP</th>
       <th>Endereço</th>
-      <th>Bairro</th>
-      <th>Número</th>
       <th>Cidade</th>
-      <th>UF</th>
-      <th>E-mail</th>
-      <th>Telefone</th>
+      <th>Contato</th>
       <th>Ações</th>
     </tr>
     <tr v-for="(client, idx) in data">
@@ -40,13 +36,19 @@
       <td>{{ client.fictional_name }}</td>
       <td>{{ client.register_number }}</td>
       <td>{{ client.zip_code }}</td>
-      <td>{{ client.address }}</td>
-      <td>{{ client.district }}</td>
-      <td>{{ client.number }}</td>
-      <td>{{ client.city }}</td>
-      <td>{{ client.state }}</td>
-      <td>{{ client.email }}</td>
-      <td>{{ client.phone }}</td>
+      <td>
+        <p>{{ client.address }}</p>
+        <p>{{ client.district }}</p>
+        <p>{{ client.number }}</p>
+      </td>
+      <td>
+        {{ client.city }}/{{ client.state }}
+      </td>
+      <td>
+        <p>{{ client.email }}</p>
+        /
+        <p>{{ client.phone }}</p>
+      </td>
       <td class="actions">
         <button @click="$emit('showModal', client)"><Pencil /></button>
         <button @click="$emit('updateExpirationDates', client.id)"><Update /></button>
@@ -68,6 +70,9 @@
     padding: 0.8rem 1rem;
     text-align: center;
   }
+  td {
+    font-size: 1rem;
+  }
   tr:nth-child(odd) {
     background-color: #e7e7e7;
   }
@@ -80,6 +85,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
   }
   .actions button {
     font-size: 20px;
