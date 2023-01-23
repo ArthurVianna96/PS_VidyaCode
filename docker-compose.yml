@@ -19,6 +19,8 @@ services:
     environment:
       - MYSQL_DATABASE=PS_VidyaCode
       - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./mysql:/var/lib/mysql
   front:
     container_name: front
     build: ./frontend
