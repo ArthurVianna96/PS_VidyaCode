@@ -47,4 +47,10 @@
   input[type='text']::placeholder, input[type='email']::placeholder, input[type='number']::placeholder {
     color: #acaaaa;
   }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+  }
 </style>

@@ -40,4 +40,7 @@
   select:disabled {
     color: #acaaaa;
   }
+  select:hover {
+    cursor: pointer;
+  }
 </style>
