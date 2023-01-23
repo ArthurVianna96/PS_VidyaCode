@@ -1,7 +1,7 @@
 # Processo seletivo Vidya Code
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<details open>
   <summary>Sumário</summary>
   <ol>
     <li>
