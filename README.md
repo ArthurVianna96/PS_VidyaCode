@@ -1,275 +1,898 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
-
-
+# Processo seletivo Vidya Code
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sumário</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#sobre-o-projeto">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#desenvolvido-com">Desenvolvido com</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#abrindo-o-projeto">Abrindo o Projeto</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#pre-requisitos">Pre-requisitos</a></li>
+        <li><a href="#instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li>
+      <a href="#funcionalidades-do-projeto">Funcionalidades do projeto</a>
+      <ul>
+        <li>
+          <a href="#tela-de-cadastro-de-cliente">Tela de cadastro de cliente</a>
+        </li>
+        <li><a href="#tela-de-cadastro-de-produto">Tela de cadastro de produto</a>
+        </li>
+        <li><a href="#tela-de-cadastro-de-compras-(vínculo-de-produtos-e-clientes)">
+          Tela de cadastro de Compras (vínculo de Produtos e Clientes)
+        </a>
+        </li>
+        <li>
+          <a href="#tela-de-consulta">Tela de consulta</a>
+          <ul>
+            <li><a href="#consulta-de-clientes">Consulta de clientes</a></li>
+            <li><a href="#consulta-de-produtos">Consulta de produtos</a></li>
+            <li><a href="#consulta-de-compras">Consulta de compras (vínculos)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+    <a href="#sobre-a-api">Sobre a API</a>
+    <ul>
+      <li><a href="#listar-clientes">Listar Clientes</a></li>
+      <li><a href="#listar-cliente">Listar Cliente</a></li>
+      <li><a href="#cadastrar-clientes">Cadastrar cliente</a></li>
+      <li><a href="#deletar-clientes">Deletar cliente</a></li>
+      <li><a href="#listar-produtos">Listar Produtos</a></li>
+      <li><a href="#listar-produto">Listar Produto</a></li>
+      <li><a href="#cadastrar-produto">Cadastrar Produto</a></li>
+      <li><a href="#deletar-produto">Deletar Produto</a></li>
+      <li><a href="#listar-compras">Listar Compras</a></li>
+      <li><a href="#listar-compra">Listar Compra</a></li>
+      <li><a href="#cadastrar-Compra">Cadastrar Compra</a></li>
+      <li><a href="#deletar-compra">Deletar Compra</a></li>
+      <li><a href="#atualizar-compras">Atualizar Compras</a></li>
+    </ul>
+    </li>
   </ol>
 </details>
 
+## Sobre o Projeto
 
+![alt text](/images/home.png)
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+Este projeto foi desenvolvido para a etapa de teste técnico do processo seletivo da [Vidya Code](https://vidyacode.com.br/).  
+A seguir estão listados os requisitos do projeto:
+  - [x] Criação de Banco de dados Relacional
+  - [x] Tela para cadastro de clientes
+  - [x] Tela para cadastro de produtos
+  - [x] Tela para cadastro de vínculo entre produtos e clientes com data de validade
+  - [x] Bloquear exclusão de produtos vinculados a um cliente
+  - [x] Procedimento para atualizar as datas de validade de vínculo dos produtos de um determinado cliente
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+A seguir estão listados os requisitos bônus do projeto:
+  - [x] O campo de CNPJ na tela de cadastro de clientes deve servir de gatilho para uma consulta via api dos dados da empresa
+  - [x] O campo de CEP na tela de cadastro de clientes deve servir de gatilho para uma consulta via api ao endereço da empresa
+  - [x] Criar a modelagem de banco de dados com base nas tabelas criadas
+  - [x] Crie um README no github bem documentado contendo todos os objetos, modelagem, prints da tela de todo trabalho desenvolvido.
+  - [x] Realizar a validação dos campos no formulário de cadastro de produtos.
+  - [x] Utilize o Composer para gerenciar as dependências
+  - [x] Utilize Migrations para as tabelas criadas
+  - [x] Deixe seu código mais legível utilizando Padrões de Projeto
+  - [x] Utilize um container em docker para subir seu servidor PHP e seu banco de dados de sua preferência.
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+### Desenvolvido com 
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
+* [![php][php]][php-url]
 * [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Mysql][Mysql]][Mysql-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Abrindo o Projeto
 
+O projeto foi desenvolvido de maneira que pode ser inicializado tanto localmente, quanto com o uso do docker compose
 
+### Pre-requisitos
 
-<!-- GETTING STARTED -->
-## Getting Started
+<details>
+  <summary>Localmente</summary>
+  <p>Certifique-se que possui:</p>
+  <ul>
+    <li>O Mysql rodando na sua máquina (Porta 3306)</li>
+    <li>O <a href="https://nodejs.org/en/" target="_blank">Node</a> instalado</li>
+    <li>O <a href="https://getcomposer.org/">Composer</a> instalado</li>
+  </ul> 
+</details>
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+<details>
+  <summary>Docker</summary>
+  <p>Certifique-se que:</p>
+  <ul>
+    <li>Caso possua uma instância do Mysql rodando na sua máquina (Porta 3306) pare ela, pois o container do mysql irá utilizar a porta 3306
+    </li>
+    <li>O <a href="https://www.docker.com/" target="_blank">Docker</a> instalado</li>
+    <li>O <a href="https://docs.docker.com/compose/install/">Docker compose</a> instalado</li>
+  </ul> 
+</details>
 
-### Prerequisites
+para ambos os cenários, certifique-se que as portas 3000 (server) e 5173 (frontend) estão livres
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+<hr />
+
+### Instalação
+
+Para começar, faça o clone do repositório para a sua máquina
+
+via ssh:
+   ```sh
+   git clone git@github.com:ArthurVianna96/PS_VidyaCode.git
+   ```
+
+via https:
+   ```sh
+   git clone https://github.com/ArthurVianna96/PS_VidyaCode.git
+   ```
+
+Uma vez clonado o repositório agora vamos iniciar o projeto.
+
+#### Localmente :computer:
+
+<hr />
+
+Entre na pasta `/server` e instale as dependências do projeto
+   ```sh
+   php composer.phar update
+   ```
+Agora roda as migrations do banco de dados
+   ```sh
+   vendor/bin/phinx migrate
+   ```
+Por fim rode o servidor do php
   ```sh
-  npm install npm@latest -g
+  php -S 0.0.0.0:3000
+  ```
+Agora entre na pasta `/frontend` e instale as dependências do projeto
+  ```sh
+  npm install
+  ```
+Rode o projeto
+  ```sh
+  npm run dev
   ```
 
-### Installation
+#### Docker :whale:
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+<hr />
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+Dentro da raiz do projeto, rode a rede de containers
+para Docker Compose < 1.29.2
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   docker-compose up -d
    ```
-3. Install NPM packages
+Para Docker compose >= 1.29.2
+Agora roda as migrations do banco de dados
    ```sh
-   npm install
+   docker compose up
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+ATENÇÃO: os próximos passos só serão necessários na primeira vez que o projeto for inicializado  
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+entre no container do server
+  ```sh
+  docker -exec -it server sh
+  ```
+e rode as migrations do banco de dados
+  ```sh
+  vendor/bin/phinx migrate
+  ```
 
+## Funcionalidades do projeto
 
+### Tela de cadastro de cliente
 
-<!-- USAGE EXAMPLES -->
-## Usage
+![tela de cadastro de cliente](/images/cadastro-clientes.png)
+Esta tela consiste de um formulário para cadastro de um cliente no sistema. Os campos CNPJ e CEP possuem uma conexão com duas api's, [publica cnpj](https://publica.cnpj.ws) e [via cep](https://viacep.com.br) respectivamente, para coleta de dados sobre o cliente a ser cadastrado.
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Tela de cadastro de produto
+![tela de cadastro de produto](/images/cadastro-produtos.png)
+Esta tela consiste de um formulário para cadastro de produtos no sistema. 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Tela de cadastro de Compras (vínculo de Produtos e Clientes)
+![tela de compras](/images/cadastro-compras.png)
+Esta tela consiste de um formulário para cadastro de produtos no sistema. Para este formulário, é necessário ter previamente cadastrado pelo menos um cliente e um produto no sistema, visto que é necessário selecionar um de cada campo no formulário bem como a data de validade do vínculo.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Tela de consulta
+![tela de consulta](/images/home-sem-consulta.png)
+Esta tela é a tela de entrada do sistema. Aqui é possível visualizar todos os registros no sistema, basta escolher o tipo de consulta que deseja fazer. Os tipos de consulta disponíveis são:
+- Cliente
+- Produto
+- Compras (vínculo de Produto e Cliente)
 
+#### Consulta de clientes
+![tela de consulta de clientes](/images/home-clientes.png)
+Selecionando a consulta por clientes uma tabela contendo todos os clientes cadastrados e suas respectivas informações irá aparecer.  
+Além de poder visualizar as informações dos clientes, algumas ações são possíveis, sendo elas:
+- Editar um cliente (primeiro botão na seção de Ações):
+  - Um formulário pré preenchido parecido com o de cadastro de cliente irá aparecer, basta editar o campo que deseja e salvar a alteração.
+  ![edição de cliente](/images/edicao-cliente.png)
+- Atualizar a data de validade de todos as compras (vínculos daquele cliente)( segundo botão na seção de Ações)
+  - Um formulário perguntando a quantidade de dias a serem adicionados em todos os vínculos irá aparecer.
+  - No formulário já existe uma quantidade padrão 30 de dias a serem adicionados. Caso não seja o desejado, basta alterar o valor no campo.
+  ![atualização de cliente](/images/atualizacao-cliente.png)
+- Deletar um cliente (último botão na seção de ações):
+  - Basta clicar no icone para deletar o cliente
+  - Clientes já vinculados a uma compra (vínculo) não poderão ser deletados, será necessário apagar todos os seus vínculos antes
 
+<hr />
 
-<!-- ROADMAP -->
-## Roadmap
+#### Consulta de Produtos
+![tela de consulta de produtos](/images/home-produtos.png)
+Selecionando a consulta por produtos uma tabela contendo todos os produtos cadastrados e suas respectivas informações irá aparecer.  
+Além de poder visualizar as informações dos produtos, algumas ações são possíveis, sendo elas:
+- Editar um produto (primeiro botão na seção de Ações):
+  - Um formulário pré preenchido parecido com o de cadastro de produto irá aparecer, basta editar o campo que deseja e salvar a alteração.
+  ![edição de produto](/images/edicao-produto.png)
+- Deletar um produto (último botão na seção de ações):
+  - Basta clicar no icone para deletar o produto
+  - Produtos já vinculados a uma compra (vínculo) não poderão ser deletados, será necessário apagar todos os seus vínculos antes
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+<hr />
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+#### Consulta de Compras
+![tela de consulta de compras](/images/home.png)
+Selecionando a consulta por compras uma tabela contendo todos as compras cadastrados e suas respectivas informações irá aparecer.  
+Além de poder visualizar as informações das compras, algumas ações são possíveis, sendo elas:
+- Editar uma compra (primeiro botão na seção de Ações):
+  - Um formulário pré preenchido parecido com o de cadastro de compra irá aparecer, basta editar o campo que deseja e salvar a alteração.
+  ![edição de compra](/images/edicao-compra.png)
+- Deletar um compra (último botão na seção de ações):
+  - Basta clicar no icone para deletar a compra
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Sobre a API
+Para o projeto foi desenvolvida uma API Restful que possui as seguintes funcionalidades:
 
+### Listar clientes
+  Retorna um JSON contendo todos os clientes
 
+* **Endpoint**
 
-<!-- CONTRIBUTING -->
-## Contributing
+  /client
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+* **Méthodo:**
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+  `GET`
+  
+* **Sucesso:**
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+  * **Status:** 200 <br />
+    **Conteúdo:** <br />
+    ```json
+    [
+      {
+        "id": 1,
+        "company": "VIDYA CODE LTDA",
+        "fictional_name": "VIDYA CODE",
+        "register_number": "20.060.683/0001-80",
+        "zip_code": "53417-350",
+        "address": "Rua José Maria",
+        "number": "107",
+        "district": "Artur Lundgren I",
+        "city": "Paulista",
+        "state": "PE",
+        "email": "vidyacode@vidyacode.com",
+        "phone": "(61) 99626-8850"
+      }
+    ]
+    ```
+### Listar Cliente
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  Retorna um JSON contendo um cliente.
 
+* **Endpoint**
 
+  /client/:id
 
-<!-- LICENSE -->
-## License
+* **Méthodo:**
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+  `GET`
+  
+* **Sucesso:**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "id": 1,
+      "company": "VIDYA CODE LTDA",
+      "fictional_name": "VIDYA CODE",
+      "register_number": "20.060.683/0001-80",
+      "zip_code": "53417-350",
+      "address": "Rua José Maria",
+      "number": "107",
+      "district": "Artur Lundgren I",
+      "city": "Paulista",
+      "state": "PE",
+      "email": "vidyacode@vidyacode.com",
+      "phone": "(61) 99626-8850"
+    }
+    ```
+ 
+* **Erro:**
 
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "No client found"
+  }`
 
+### Cadastrar Cliente
 
-<!-- CONTACT -->
-## Contact
+  Cadastra um cliente no banco de dados. Retorna um JSON contendo as informações do cliente cadastrado.
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+* **Endpoint**
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+  /client
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* **Méthodo:**
 
+  `POST`
 
+* **Body:**
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+  ```json
+  {
+      "company": "VIDYA CODE LTDA",
+      "fictional_name": "VIDYA CODE",
+      "register_number": "20.060.683/0001-80",
+      "zip_code": "53417-350",
+      "address": "Rua José Maria",
+      "number": "107",
+      "district": "Artur Lundgren I",
+      "city": "Paulista",
+      "state": "PE",
+      "email": "vidyacode@vidyacode.com",
+      "phone": "(61) 99626-8850"
+  }
+  ```
+  
+* **Sucesso:**
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+  * **Status:** 201 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "company": "VIDYA CODE LTDA",
+      "fictional_name": "VIDYA CODE",
+      "register_number": "20.060.683/0001-80",
+      "zip_code": "53417-350",
+      "address": "Rua José Maria",
+      "number": "107",
+      "district": "Artur Lundgren I",
+      "city": "Paulista",
+      "state": "PE",
+      "email": "vidyacode@vidyacode.com",
+      "phone": "(61) 99626-8850"
+    }
+    ```
+ 
+* **Erro:**
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Editar Cliente
 
+  Edite um cliente no banco de dados. Retorna um JSON contendo as informações do cliente editado.
 
+* **Endpoint**
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
+  /client/:id
+
+* **Méthodo:**
+
+  `PUT`
+
+* **Body:**
+
+  ```json
+  {
+      "company": "VIDYA CODE LTDA",
+      "fictional_name": "VIDYA CODE",
+      "register_number": "20.060.683/0001-80",
+      "zip_code": "53417-350",
+      "address": "Rua José Maria",
+      "number": "107",
+      "district": "Artur Lundgren I",
+      "city": "Paulista",
+      "state": "PE",
+      "email": "vidyacode@vidyacode.com",
+      "phone": "(61) 99626-8850"
+  }
+  ```
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "company": "VIDYA CODE LTDA",
+      "fictional_name": "VIDYA CODE",
+      "register_number": "20.060.683/0001-80",
+      "zip_code": "53417-350",
+      "address": "Rua José Maria",
+      "number": "107",
+      "district": "Artur Lundgren I",
+      "city": "Paulista",
+      "state": "PE",
+      "email": "vidyacode@vidyacode.com",
+      "phone": "(61) 99626-8850"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Deletar Cliente
+
+  Deleta um cliente do banco de dados.
+
+* **Endpoint**
+
+  /client/:id
+
+* **Méthodo:**
+
+  `DELETE`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    null
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 409 CONFLICT <br />
+    **Conteúdo:** `{
+  "message": "O cliente está vinculado a uma compra e por isso não pode ser excluído"
+  }`
+
+    OU 
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Listar produtos
+  Retorna um JSON contendo todos os produtos
+
+* **Endpoint**
+
+  /product
+
+* **Méthodo:**
+
+  `GET`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br />
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "OUTHACK",
+        "description": "Software da empresa OUTHACK",
+        "version": "1.0.1"
+      },
+      {
+        "id": 2,
+        "name": "Revit",
+        "description": "Software de modelagem BIM",
+        "version": "1.0.2"
+      },
+      {
+        "id": 3,
+        "name": "AutoCAD",
+        "description": "Software para desenho 2D e 3D",
+        "version": "8.2.1"
+      }
+    ]
+    ```
+### Listar Produto
+
+  Retorna um JSON contendo um produto.
+
+* **Endpoint**
+
+  /product/:id
+
+* **Méthodo:**
+
+  `GET`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "id": 1,
+      "name": "OUTHACK",
+      "description": "Software da empresa OUTHACK",
+      "version": "1.0.1"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "No product found"
+  }`
+
+### Cadastrar Produto
+
+  Cadastra um produto no banco de dados. Retorna um JSON contendo as informações do produto cadastrado.
+
+* **Endpoint**
+
+  /product
+
+* **Méthodo:**
+
+  `POST`
+
+* **Body:**
+
+  ```json
+    {
+      "name": "OUTHACK",
+      "description": "Software da empresa OUTHACK",
+      "version": "1.0.1"
+    }
+    ```
+  
+* **Sucesso:**
+
+  * **Status:** 201 <br />
+    **Conteúdo:** <br /> 
+  ```json
+    {
+      "name": "OUTHACK",
+      "description": "Software da empresa OUTHACK",
+      "version": "1.0.1"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Editar Produto
+
+  Edite um produto no banco de dados. Retorna um JSON contendo as informações do produto editado.
+
+* **Endpoint**
+
+  /product/:id
+
+* **Méthodo:**
+
+  `PUT`
+
+* **Body:**
+
+  ```json
+  {
+    "name": "OUTHACK",
+    "description": "Software da empresa OUTHACK",
+    "version": "1.0.1"
+  }
+  ```
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "name": "OUTHACK",
+      "description": "Software da empresa OUTHACK",
+      "version": "1.0.1"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Deletar Produto
+
+  Deleta um produto do banco de dados.
+
+* **Endpoint**
+
+  /product/:id
+
+* **Méthodo:**
+
+  `DELETE`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    null
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 409 CONFLICT <br />
+    **Conteúdo:** `{
+  "message": "O produto está vinculado a uma compra e por isso não pode ser excluído"
+  }`
+
+    OU 
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Listar compras
+  Retorna um JSON contendo todos as compras
+
+* **Endpoint**
+
+  /purchase
+
+* **Méthodo:**
+
+  `GET`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br />
+    ```json
+    [
+      {
+        "id": 1,
+        "client_id": 1,
+        "client": "VIDYA CODE LTDA",
+        "product": "OUTHACK",
+        "product_id": 1,
+        "expirationDate": "2023-02-17 00:00:00"
+      },
+      {
+        "id": 2,
+        "client_id": 1,
+        "client": "VIDYA CODE LTDA",
+        "product": "AutoCAD",
+        "product_id": 3,
+        "expirationDate": "2023-02-09 00:00:00"
+      }
+    ]
+    ```
+### Listar Compra
+
+  Retorna um JSON contendo um compra.
+
+* **Endpoint**
+
+  /purchase/:id
+
+* **Méthodo:**
+
+  `GET`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "id": 1,
+      "client_id": 1,
+      "client": "VIDYA CODE LTDA",
+      "product": "OUTHACK",
+      "product_id": 1,
+      "expirationDate": "2023-02-17 00:00:00"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "No relationship found"
+  }`
+
+### Cadastrar Compra
+
+  Cadastra uma compra no banco de dados. Retorna um JSON contendo as informações da compra cadastrada.
+
+* **Endpoint**
+
+  /purchase
+
+* **Méthodo:**
+
+  `POST`
+
+* **Body:**
+
+  ```json
+    {
+      "productId": 1,
+      "clientId": 2,
+      "expirationDate": "2023-01-28"
+    }
+    ```
+  
+* **Sucesso:**
+
+  * **Status:** 201 <br />
+    **Conteúdo:** <br /> 
+  ```json
+    {
+      "productId": 2,
+      "clientId": 2,
+      "expirationDate": "2023-01-28"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+  
+### Editar Compra
+
+  Edite uma compra no banco de dados. Retorna um JSON contendo as informações da compra editada.
+
+* **Endpoint**
+
+  /purchase/:id
+
+* **Méthodo:**
+
+  `PUT`
+
+* **Body:**
+
+  ```json
+  {
+    "productId": 1,
+    "clientId": 2,
+    "expirationDate": "2023-01-28"
+  }
+  ```
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    {
+      "productId": 1,
+      "clientId": 2,
+      "expirationDate": "2023-01-28"
+    }
+    ```
+ 
+* **Erro:**
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
+
+### Deletar Compra
+
+  Deleta uma compra do banco de dados.
+
+* **Endpoint**
+
+  /purchase/:id
+
+* **Méthodo:**
+
+  `DELETE`
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+    ```json
+    null
+    ```
+
+### Atualizar compras
+
+  Atualiza todas as compras (vínculos) de um cliente em `daysToAdd` dias. Retorna um JSON contendo todos os vínculos do cliente.
+
+* **Endpoint**
+
+  /expiration
+
+* **Méthodo:**
+
+  `POST`
+
+* **Body:**
+
+  ```json
+    {
+      "clientId": 1,
+      "daysToAdd": 30
+    }
+  ```
+  
+* **Sucesso:**
+
+  * **Status:** 200 <br />
+    **Conteúdo:** <br /> 
+  ```json
+    [
+      {
+        "id": 1,
+        "client_id": 1,
+        "client": "VIDYA CODE LTDA",
+        "product": "OUTHACK",
+        "product_id": 1,
+        "expirationDate": "2023-03-19 00:00:00"
+      },
+      {
+        "id": 5,
+        "client_id": 1,
+        "client": "VIDYA CODE LTDA",
+        "product": "OUTHACK",
+        "product_id": 1,
+        "expirationDate": "2023-02-27 00:00:00"
+      },
+      {
+        "id": 2,
+        "client_id": 1,
+        "client": "VIDYA CODE LTDA",
+        "product": "AutoCAD",
+        "product_id": 3,
+        "expirationDate": "2023-03-11 00:00:00"
+      }
+    ]
+  ```
+ 
+* **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+    "message": "Client does not have any products registered"
+  }`
+
+[php]: https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white
+[php-url]: https://www.php.net/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-
-## Como Rodar
-docker compose up -d --build  
-entre no container do servidor - `docker exer -it server sh`  
-rode as migrations e saia do container - `vendor/bin/phinx migrate & exit`
+[Mysql]: https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white
+[Mysql-url]: https://www.mysql.com/
