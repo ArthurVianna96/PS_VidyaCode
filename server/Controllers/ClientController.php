@@ -96,7 +96,7 @@
         $result = $this->clientService->delete($id);
         return [
           'status' => 200,
-          'data' => $result
+          'data' => null
         ];
       } catch (PDOException $e) {
         if (str_contains($e->getMessage(), 'SQLSTATE[23000]')) {

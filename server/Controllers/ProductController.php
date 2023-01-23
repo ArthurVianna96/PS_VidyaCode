@@ -80,7 +80,7 @@
         $result = $this->productService->delete($id);
         return [
           'status' => 200,
-          'data' => 'product deleted'
+          'data' => null
         ];
       } catch (PDOException $e) {
         if (str_contains($e->getMessage(), 'SQLSTATE[45000]')) {

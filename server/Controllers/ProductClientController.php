@@ -80,7 +80,7 @@
         $result = $this->productClientService->delete($id);
         return [
           'status' => 200,
-          'data' => $result
+          'data' => null
         ];
       } catch (PDOException $e) {
         return [
