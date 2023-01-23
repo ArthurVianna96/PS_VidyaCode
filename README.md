@@ -8,6 +8,7 @@
       <a href="#sobre-o-projeto">Sobre o Projeto</a>
       <ul>
         <li><a href="#desenvolvido-com">Desenvolvido com</a></li>
+        <li><a href="#diagrama-de-entidade-relacionamento">Digrama de Entidade Relacionamento</a></li>
       </ul>
     </li>
     <li>
@@ -107,7 +108,7 @@ O projeto foi desenvolvido de maneira que pode ser inicializado tanto localmente
     </li>
     <li>O <a href="https://www.docker.com/" target="_blank">Docker</a> instalado</li>
     <li>O <a href="https://docs.docker.com/compose/install/">Docker compose</a> instalado</li>
-    li>que as portas 3000 (server) e 5173 (frontend) estão livres</li>
+    <li>que as portas 3000 (server) e 5173 (frontend) estão livres</li>
   </ul> 
 
 <hr />
