@@ -93,34 +93,22 @@ A seguir estão listados os requisitos bônus do projeto:
 * [![Vue][Vue.js]][Vue-url]
 * [![Mysql][Mysql]][Mysql-url]
 
+### Diagrama de Entidade Relacionamento
+![der projeto](/images/DER.png)
+
 ## Abrindo o Projeto
 
 O projeto foi desenvolvido de maneira que pode ser inicializado tanto localmente, quanto com o uso do docker compose
 
 ### Pre-requisitos
-
-<details>
-  <summary>Localmente</summary>
-  <p>Certifique-se que possui:</p>
-  <ul>
-    <li>O Mysql rodando na sua máquina (Porta 3306)</li>
-    <li>O <a href="https://nodejs.org/en/" target="_blank">Node</a> instalado</li>
-    <li>O <a href="https://getcomposer.org/">Composer</a> instalado</li>
-  </ul> 
-</details>
-
-<details>
-  <summary>Docker</summary>
-  <p>Certifique-se que:</p>
+  O projeto foi configurado para rodar dentro de containers, portanto, certifique-se que:
   <ul>
     <li>Caso possua uma instância do Mysql rodando na sua máquina (Porta 3306) pare ela, pois o container do mysql irá utilizar a porta 3306
     </li>
     <li>O <a href="https://www.docker.com/" target="_blank">Docker</a> instalado</li>
     <li>O <a href="https://docs.docker.com/compose/install/">Docker compose</a> instalado</li>
+    li>que as portas 3000 (server) e 5173 (frontend) estão livres</li>
   </ul> 
-</details>
-
-para ambos os cenários, certifique-se que as portas 3000 (server) e 5173 (frontend) estão livres
 
 <hr />
 
@@ -139,31 +127,6 @@ via https:
    ```
 
 Uma vez clonado o repositório agora vamos iniciar o projeto.
-
-#### Localmente :computer:
-
-<hr />
-
-Entre na pasta `/server` e instale as dependências do projeto
-   ```sh
-   php composer.phar update
-   ```
-Agora roda as migrations do banco de dados
-   ```sh
-   vendor/bin/phinx migrate
-   ```
-Por fim rode o servidor do php
-  ```sh
-  php -S 0.0.0.0:3000
-  ```
-Agora entre na pasta `/frontend` e instale as dependências do projeto
-  ```sh
-  npm install
-  ```
-Rode o projeto
-  ```sh
-  npm run dev
-  ```
 
 #### Docker :whale:
 
