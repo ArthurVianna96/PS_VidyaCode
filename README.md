@@ -44,15 +44,18 @@
     <ul>
       <li><a href="#listar-clientes">Listar Clientes</a></li>
       <li><a href="#listar-cliente">Listar Cliente</a></li>
-      <li><a href="#cadastrar-clientes">Cadastrar cliente</a></li>
-      <li><a href="#deletar-clientes">Deletar cliente</a></li>
+      <li><a href="#cadastrar-cliente">Cadastrar cliente</a></li>
+      <li><a href="#Editar-cliente">Editar cliente</a></li>
+      <li><a href="#deletar-cliente">Deletar cliente</a></li>
       <li><a href="#listar-produtos">Listar Produtos</a></li>
       <li><a href="#listar-produto">Listar Produto</a></li>
       <li><a href="#cadastrar-produto">Cadastrar Produto</a></li>
+      <li><a href="#editar-produto">Editar Produto</a></li>
       <li><a href="#deletar-produto">Deletar Produto</a></li>
       <li><a href="#listar-compras">Listar Compras</a></li>
       <li><a href="#listar-compra">Listar Compra</a></li>
       <li><a href="#cadastrar-Compra">Cadastrar Compra</a></li>
+      <li><a href="#editar-Compra">Editar Compra</a></li>
       <li><a href="#deletar-compra">Deletar Compra</a></li>
       <li><a href="#atualizar-compras">Atualizar Compras</a></li>
     </ul>
