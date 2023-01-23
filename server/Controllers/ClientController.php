@@ -21,7 +21,7 @@
         return [
           'status' => $this->errorMap['NOT_FOUND'],
           'data' => [
-            'message' => 'No client found',
+            'message' => 'Nenhum cliente Encontrado',
           ]
         ];
       }
@@ -76,10 +76,14 @@
         'phone' => $request->phone
       ];
       try {
+        $doesClientExist = $this->findById($id);
+        if ($doesClientExist['status'] === 404) {
+          return $doesClientExist;
+        }
         $result = $this->clientService->update($input, $id);
         return [
           'status' => 200,
-          'data' => $input
+          'data' => null
         ];
       } catch (PDOException $e) {
         return [
@@ -93,6 +97,10 @@
 
     public function delete($id) {
       try {
+        $doesProductClientExist = $this->findById($id);
+        if ($doesProductClientExist['status'] === 404) {
+          return $doesProductClientExist;
+        }
         $result = $this->clientService->delete($id);
         return [
           'status' => 200,

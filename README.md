@@ -322,7 +322,7 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
 
   * **Status:** 404 NOT FOUND <br />
     **Conteúdo:** `{
-  "message": "No client found"
+  "message": "Nenhum cliente encontrado"
   }`
 
 ### Cadastrar Cliente
@@ -434,6 +434,13 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
  
 * **Erro:**
 
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum cliente encontrado"
+  }`
+
+  OU
+
   * **Status:** 500 SERVER ERROR <br />
     **Conteúdo:** `{
   "message": <mensagem de erro>
@@ -460,6 +467,13 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
     ```
  
 * **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum cliente encontrado"
+  }`
+
+  OU
 
   * **Status:** 409 CONFLICT <br />
     **Conteúdo:** `{
@@ -539,7 +553,7 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
 
   * **Status:** 404 NOT FOUND <br />
     **Conteúdo:** `{
-  "message": "No product found"
+  "message": "Nenhum produto encontrado"
   }`
 
 ### Cadastrar Produto
@@ -610,15 +624,18 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
   * **Status:** 200 <br />
     **Conteúdo:** <br /> 
     ```json
-    {
-      "name": "OUTHACK",
-      "description": "Software da empresa OUTHACK",
-      "version": "1.0.1"
-    }
+    null
     ```
  
 * **Erro:**
 
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum produto encontrado"
+  }`
+
+  OU 
+  
   * **Status:** 500 SERVER ERROR <br />
     **Conteúdo:** `{
   "message": <mensagem de erro>
@@ -645,6 +662,13 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
     ```
  
 * **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum produto encontrado"
+  }`
+
+  OU
 
   * **Status:** 409 CONFLICT <br />
     **Conteúdo:** `{
@@ -724,7 +748,7 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
 
   * **Status:** 404 NOT FOUND <br />
     **Conteúdo:** `{
-  "message": "No relationship found"
+  "message": "Nenhum vínculo encontrado"
   }`
 
 ### Cadastrar Compra
@@ -795,14 +819,17 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
   * **Status:** 200 <br />
     **Conteúdo:** <br /> 
     ```json
-    {
-      "productId": 1,
-      "clientId": 2,
-      "expirationDate": "2023-01-28"
-    }
+    null
     ```
  
 * **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum produto encontrado"
+  }`
+
+  OU
 
   * **Status:** 500 SERVER ERROR <br />
     **Conteúdo:** `{
@@ -828,6 +855,20 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
     ```json
     null
     ```
+  
+* **Erro:**
+
+  * **Status:** 404 NOT FOUND <br />
+    **Conteúdo:** `{
+  "message": "Nenhum produto encontrado"
+  }`
+
+  OU
+
+  * **Status:** 500 SERVER ERROR <br />
+    **Conteúdo:** `{
+  "message": <mensagem de erro>
+  }`
 
 ### Atualizar compras
 

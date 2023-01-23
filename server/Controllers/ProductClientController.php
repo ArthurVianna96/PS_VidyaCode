@@ -21,7 +21,7 @@
         return [
           'status' => $this->errorMap['NOT_FOUND'],
           'data' => [
-            'message' => 'No relationship found',
+            'message' => 'Nenhum vínculo encontrado',
           ]
         ];
       }
@@ -60,10 +60,14 @@
         'expirationDate' => $request->expirationDate,
       ];
       try {
+        $doesProductClientExist = $this->findById($id);
+        if ($doesProductClientExist['status'] === 404) {
+          return $doesProductClientExist;
+        }
         $result = $this->productClientService->update($input, $id);
         return [
           'status' => 200,
-          'data' => $result
+          'data' => null
         ];
       } catch (PDOException $e) {
         return [
@@ -77,6 +81,10 @@
 
     public function delete($id) {
       try {
+        $doesProductClientExist = $this->findById($id);
+        if ($doesProductClientExist['status'] === 404) {
+          return $doesProductClientExist;
+        }
         $result = $this->productClientService->delete($id);
         return [
           'status' => 200,

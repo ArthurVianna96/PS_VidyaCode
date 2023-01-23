@@ -21,7 +21,7 @@
         return [
           'status' => $this->errorMap['NOT_FOUND'],
           'data' => [
-            'message' => 'No product found',
+            'message' => 'Nenhum produto encontrado',
           ]
         ];
       }
@@ -60,10 +60,14 @@
         'version' => $request->version,
       ];
       try {
+        $doesProductExist = $this->findById($id);
+        if ($doesProductExist['status'] === 404) {
+          return $doesProductExist;
+        }
         $result = $this->productService->update($input, $id);
         return [
           'status' => 200,
-          'data' => $input
+          'data' => null
         ];
       } catch (PDOException $e) {
         return [
@@ -77,6 +81,10 @@
 
     public function delete($id) {
       try {
+        $doesProductExist = $this->findById($id);
+        if ($doesProductExist['status'] === 404) {
+          return $doesProductExist;
+        }
         $result = $this->productService->delete($id);
         return [
           'status' => 200,
