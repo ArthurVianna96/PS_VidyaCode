@@ -420,19 +420,7 @@ Para o projeto foi desenvolvida uma API Restful que possui as seguintes funciona
   * **Status:** 200 <br />
     **Conteúdo:** <br /> 
     ```json
-    {
-      "company": "VIDYA CODE LTDA",
-      "fictional_name": "VIDYA CODE",
-      "register_number": "20.060.683/0001-80",
-      "zip_code": "53417-350",
-      "address": "Rua José Maria",
-      "number": "107",
-      "district": "Artur Lundgren I",
-      "city": "Paulista",
-      "state": "PE",
-      "email": "vidyacode@vidyacode.com",
-      "phone": "(61) 99626-8850"
-    }
+    null
     ```
  
 * **Erro:**
