@@ -8,7 +8,7 @@
   <HeaderComponent />
   <div class="container">
     <div class="form">
-      <FormLayout title="PCadastro de Produtos">
+      <FormLayout title="Cadastro de Produtos">
         <ProductsForm :edit-data="null"/>
       </FormLayout>
     </div>
